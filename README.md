@@ -1,5 +1,5 @@
 # learnings
-> Bits that contribute to me becoming 1337 and getting a degree :D.
+> bits and nibbles of learnings past.
 
 
-I use various languages to do this, these are a lot of experiments and tutorials I followed, I decided on using one repo for all of it instead of gists.
+I use various languages in here. following some books / online resources.
