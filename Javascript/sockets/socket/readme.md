@@ -1,0 +1,1 @@
+run both scripts, talk from one cli to another :D.
