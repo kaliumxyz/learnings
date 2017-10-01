@@ -1,10 +1,10 @@
 'use strict'
-import {
+const {
 	graphql,
 	GraphQLSchema,
 	GraphQLObjectType,
 	GraphQLString
-} from 'graphql'
+} = require('graphql')
 
 const schema = new GraphQLSchema({
 	query: new GraphQLObjectType({
@@ -20,14 +20,5 @@ const schema = new GraphQLSchema({
 	})
 })
 
-var query = '{ hello }';
+module.exports = schema
 
-graphql(schema, query).then(result => {
-
- // Prints
- // {
- //   data: { hello: "world" }
- // }
- console.log(result) 
-
-});
