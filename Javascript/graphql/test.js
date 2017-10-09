@@ -7,7 +7,7 @@ import {
 } from 'graphql'
 
 
-test( async t => {
+test("Simple schema read", async t => {
 	const schema = require('./simpleSchema')
 	var query = '{ hello }'
 	await graphql(schema, query).then(result => {	
@@ -18,5 +18,4 @@ test( async t => {
 	 t.truthy(result)
 	
 	})
-	
 })
