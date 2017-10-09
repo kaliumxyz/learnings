@@ -3,7 +3,11 @@ const util = require('util')
 const parseXML = util.promisify(require('xml2js').parseString)
 const api = require('./.env.json').api
 const {
-	GraphQLObjectType, GraphQLSchema, GraphQLInt, GraphQLString
+	GraphQLObjectType,
+	GraphQLSchema,
+	GraphQLInt,
+	GraphQLString,
+	GraphQLList
 } = require('graphql')
 
 // const x = fetch(
@@ -11,6 +15,21 @@ const {
 // )
 // .then(response => response.text())
 // .then(parseXML)
+
+const BookType = new GraphQLObjectType({
+	name: 'book',
+	description: '...',
+	fields: () => ({
+		title: {
+			type: GraphQLString,
+			resolve: item => item.title[0]
+		},
+		isbn: {
+			type: GraphQLString,
+			resolve: item => item.isbn[0]
+		}
+	})
+})
 
 const AuthorType = new GraphQLObjectType({
 	name: 'Author',
@@ -21,6 +40,11 @@ const AuthorType = new GraphQLObjectType({
 			type: GraphQLString,
 			resolve: xml =>
 			xml.GoodreadsResponse.author[0].name[0]
+		},
+		books: {
+			type: new GraphQLList(BookType),
+			resolve: xml => 
+				xml.GoodreadsResponse.author[0].books[0].book
 		}
 	})
 
