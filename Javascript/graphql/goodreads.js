@@ -2,9 +2,9 @@
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const app = express()
-const schema = require('./goodreadsSchema.js')
+const schema = require('./dataloaderSchema.js')
 
-app.use('/graphql', graphqlHTTP({
+app.use('/', graphqlHTTP({
 	schema: schema,
 	graphiql: true
 }))
